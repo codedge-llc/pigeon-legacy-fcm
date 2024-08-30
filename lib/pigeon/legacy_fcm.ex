@@ -53,7 +53,7 @@ defmodule Pigeon.LegacyFCM do
     @doc false
     def start(_type, _args) do
       children = [
-        {YourApp.ADM, legacy_fcm_opts()}
+        {YourApp.LegacyFCM, legacy_fcm_opts()}
       ]
       opts = [strategy: :one_for_one, name: YourApp.Supervisor]
       Supervisor.start_link(children, opts)
@@ -91,7 +91,7 @@ defmodule Pigeon.LegacyFCM do
 
   ```
   msg = %{"body" => "your message"}
-  n = Pigeon.FCM.Notification.new(["first ID", "second ID"], msg)
+  n = Pigeon.LegacyFCM.Notification.new(["first ID", "second ID"], msg)
   ```
 
   ## Notification Struct
@@ -135,9 +135,9 @@ defmodule Pigeon.LegacyFCM do
 
   ```
   data = %{message: "your message"}
-  n = Pigeon.FCM.Notification.new(data, "device registration ID")
+  n = Pigeon.LegacyFCM.Notification.new(data, "device registration ID")
   Pigeon.FCM.push(n, fn(x) -> IO.inspect(x) end)
-  {:ok, %Pigeon.FCM.Notification{...}}
+  {:ok, %Pigeon.LegacyFCM.Notification{...}}
   ```
 
   2. Responses return the notification with an updated response.
@@ -146,8 +146,8 @@ defmodule Pigeon.LegacyFCM do
   on_response = fn(n) ->
     case n.status do
       :success ->
-        bad_regids = FCM.Notification.remove?(n)
-        to_retry = FCM.Notification.retry?(n)
+        bad_regids = LegacyFCM.Notification.remove?(n)
+        to_retry = LegacyFCM.Notification.retry?(n)
         # Handle updated regids, remove bad ones, etc
       :unauthorized ->
         # Bad FCM key
@@ -157,7 +157,7 @@ defmodule Pigeon.LegacyFCM do
   end
 
   data = %{message: "your message"}
-  n = Pigeon.FCM.Notification.new("your device token", data)
+  n = Pigeon.LegacyFCM.Notification.new("your device token", data)
   Pigeon.FCM.push(n, on_response: on_response)
   ```
 
