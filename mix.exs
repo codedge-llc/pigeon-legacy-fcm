@@ -47,7 +47,6 @@ defmodule Pigeon.LegacyFCM.Mixfile do
       {:excoveralls, "~> 0.5", only: :test, runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:jason, "~> 1.0", optional: true},
-      {:joken, "~> 2.1"},
       {:pigeon, "~> 2.0.0-rc.3"}
     ]
   end
