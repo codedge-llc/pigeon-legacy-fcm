@@ -9,7 +9,6 @@ defmodule Pigeon.LegacyFCM.Mixfile do
       app: :pigeon_legacy_fcm,
       build_embedded: Mix.env() == :prod,
       deps: deps(),
-      description: description(),
       dialyzer: dialyzer(),
       docs: docs(),
       elixir: "~> 1.7",
@@ -55,29 +54,27 @@ defmodule Pigeon.LegacyFCM.Mixfile do
 
   defp docs do
     [
-      groups_for_modules: [
-        "Legacy Firebase Cloud Messaging": [
-          Pigeon.LegacyFCM,
-          Pigeon.LegacyFCM.Notification
-        ]
+      extras: [
+        "CHANGELOG.md",
+        LICENSE: [title: "License"]
       ],
-      main: "Pigeon.LegacyFCM"
+      formatters: ["html"],
+      main: "Pigeon.LegacyFCM",
+      skip_undefined_reference_warnings_on: ["CHANGELOG.md"],
+      source_ref: "v#{@version}",
+      source_url: @source_url
     ]
-  end
-
-  defp description do
-    """
-    Pigeon adapter for Firebase Cloud Messaging Legacy API.
-    """
   end
 
   defp package do
     [
-      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      description: "Pigeon adapter for Firebase Cloud Messaging Legacy API.",
+      files: ["lib", "mix.exs", "README*", "LICENSE*", "CHANGELOG*"],
       licenses: ["MIT"],
       links: %{
         "Changelog" => "https://hexdocs.pm/pigeon-legacy-fcm/changelog.html",
-        "GitHub" => @source_url
+        "GitHub" => "https://github.com/codedge-llc/pigeon-legacy-fcm",
+        "Sponsor" => "https://github.com/sponsors/codedge-llc"
       },
       maintainers: ["Henry Popp"]
     ]
