@@ -49,23 +49,19 @@ defmodule Pigeon.LegacyFCM.Mixfile do
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:jason, "~> 1.0", optional: true},
       {:joken, "~> 2.1"},
-      {:pigeon, github: "codedge-llc/pigeon", branch: "feat/remove-legacy-fcm"}
+      {:pigeon, "~> 2.0.0-rc.3"}
     ]
   end
 
   defp docs do
     [
       groups_for_modules: [
-        "ADM - Amazon Android": [Pigeon.ADM, Pigeon.ADM.Notification],
-        "APNS - Apple iOS": [Pigeon.APNS, Pigeon.APNS.Notification],
-        "FCM - Firebase Cloud Messaging": [
-          Pigeon.FCM,
-          Pigeon.FCM.Notification,
+        "Legacy Firebase Cloud Messaging": [
           Pigeon.LegacyFCM,
           Pigeon.LegacyFCM.Notification
         ]
       ],
-      main: "Pigeon"
+      main: "Pigeon.LegacyFCM"
     ]
   end
 
