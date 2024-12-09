@@ -2,7 +2,7 @@ defmodule Pigeon.LegacyFCM.Mixfile do
   use Mix.Project
 
   @source_url "https://github.com/codedge-llc/pigeon-legacy-fcm"
-  @version "0.1.0"
+  @version "0.2.0"
 
   def project do
     [
@@ -47,7 +47,7 @@ defmodule Pigeon.LegacyFCM.Mixfile do
       {:excoveralls, "~> 0.5", only: :test, runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:jason, "~> 1.0", optional: true},
-      {:pigeon, "~> 2.0.0-rc.3"}
+      {:pigeon, "~> 2.0"}
     ]
   end
 
